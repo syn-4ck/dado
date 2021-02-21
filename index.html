@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> Dado online - Tirar dado virtual / Herramientas y Utilidades</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" id="viewportMeta" />
+    <link rel="stylesheet" href="https://herramientasyutilidades.com/assets/css/style.css">
+    <link rel="stylesheet" href="https://herramientasyutilidades.com/assets/css/media.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://herramientasyutilidades.com/assets/images/logo.png" />
+    <meta name="description" content="Una aplicación de dado online para que puedas tirar un dado virtual de una forma fácil y rápida, desde tu celular o computadora, varios dados" /> 
+	<meta name="robots" content="index, follow" />
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="https://herramientasyutilidades.com/entretenimiento/dado-online/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Dado online - Tirar dado virtual / Herramientas y Utilidades" />
+    <meta property="og:description" content="Una aplicación de dado online para que puedas tirar un dado virtual de una forma fácil y rápida, desde tu celular o computadora, varios dados" />
+    <meta property="og:image" content="https://herramientasyutilidades.com/assets/images/redes.jpg" />
+    <meta property="og:url" content="https://herramientasyutilidades.com/entretenimiento/dado-online/" />
+    <meta property="og:site_name" content="Herramientas y Utilidades" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174265612-1"></script>
+    <style>
+	/* ESTILOS GENERALES  */
+    * {
+        margin:0px;
+        box-sizing: border-box;
+        font-family: 'Lato', sans-serif;
+        color: #363636;
+    }
+    a {
+        text-decoration: none;
+    }
+    input {
+        -webkit-appearance: none; 
+    }
+    input:focus {
+        outline: none;
+    }
+    textarea {
+        resize: none;
+        -webkit-appearance: none; 
+    }
+    textarea:focus {
+        outline: 0;
+      }
+    /* EXTRAS  */
+        .sombra {
+            box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+        }
+        .nomovil {
+            display: inherit;
+        }
+        .simovil {
+            display: none;
+        }
+    /* BOTONES  */
+        .boton-verde {
+            background-color: #4cb050;
+            padding: 18px 15px;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-top: 35px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select:none;
+            touch-action: none;
+            border:none;
+        }
+        .boton-rojo {
+            background-color:red;
+            padding: 18px 15px;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-top: 35px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select:none;
+            touch-action: none;
+            border:none;
+        }
+        .boton-azul {
+            background-color:#0072bc;
+            padding: 18px 15px;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-top: 35px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select:none;
+            touch-action: none;
+            border:none;
+        }
+        .boton-amarillo {
+            background-color:#f8941d;
+            padding: 18px 15px;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-top: 35px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select:none;
+            touch-action: none;
+            border:none;
+        }
+        .boton-verde img, .boton-rojo img, .boton-azul img, .boton-amarillo img {
+            vertical-align: middle;
+            margin-left: 5px;
+            width: 16px;
+            height: auto;
+        }
+        .boton-verde:hover {
+            background-color: #398e3d;
+        }
+        .boton-rojo:hover {
+            background-color: #fb0606;
+        }
+        .boton-azul:hover {
+            background-color: #0066a9;
+        }
+        .boton-amarillo:hover {
+            background-color: #e07a00;
+        }
+        .boton-verde:focus {
+            outline: none;
+        }
+        .boton-linea-roja {
+            background-color: transparent;
+            padding: 16px 13px;
+            font-size: 18px;
+            color:red;
+            border:1px solid red;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-top: 10px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select:none;
+            touch-action: none;
+        }
+        .boton-linea-verde {
+            background-color:transparent;
+            padding: 16px 15px;
+            border:1px solid #4cb050;
+            font-size: 18px;
+            color: #4cb050;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 15px;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select:none;
+        }
+        .boton-linea-verde:hover {
+            color:#4cb050;
+        }
+        .boton-linea-verde img, .boton-linea-roja img {
+            width: 16px;
+            height: auto;
+            margin-right: 5px;
+            vertical-align: middle;
+
+        }
+    /* CONTENEDORES */
+    .contain-960 {
+        width: 960px;
+        margin:0px auto;
+    }
+    .contain-880 {
+        width: 880px;
+        margin:0px auto;
+    }
+    .contain-820 {
+        width: 820px;
+        margin:0px auto;
+    }
+    .contain-728 {
+        width: 728px;
+        margin:0px auto;
+    }
+/* HEADER  */
+    header {
+        padding: 45px 0px;
+        display: table;
+    }
+    header .logo {
+        width: 40%;
+        float: left;
+        font-size: 24px;
+        font-weight: 700;
+    }
+    header .logo img {
+        width: 32px;
+        height: auto;
+    } 
+    /* MENU  */
+    .menu {
+        float: right;
+        padding: 15px 20px;
+        border-radius: 15px;
+        background-color: #f7f7f7;
+        font-size: 18px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -ms-user-select:none;
+    }
+    .menu:hover {
+        background-color: #eee;
+    }
+    #submenu {
+        position: relative;
+    }
+    #menu-desplegable {
+        position: absolute;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0px 0px 37px 8px rgba(0,0,0,0.05);
+        padding: 20px 20px;
+        right: 0;
+        z-index: 9999;
+        top: 60px;
+        display: none;
+    }
+    #menu-desplegable li {
+        list-style: none;
+        padding:13px 10px;
+        font-size: 18px;
+    }
+    #menu-desplegable li:hover {
+        background-color: #eee;
+    }
+    .menu .arrow {
+        border: solid #363636;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        vertical-align: middle;
+        vertical-align: top;
+        margin-left: 3px;
+        margin-top: 7px;
+        cursor: pointer;
+    }
+    .menu .down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+    .menu .up {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+        margin-top: 11px;
+    }
+/* INDEX  */
+    /* BUSCADOR  */
+        .buscador {
+            background-color: #f7f7f7;
+            padding: 80px 40px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+            position: relative;
+        } 
+        .buscador h2 {
+            font-size: 28px;
+            font-weight: 400;
+            display: inline-block;
+        }
+        .buscador input {
+            padding: 20px 50px 20px 20px;
+            border-radius: 15px;
+            border:none;
+            font-size: 18px;
+            color: #363636;
+            margin-left: 20px;
+            width: 60%;
+            box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+        }
+        .buscador input:focus {
+            outline: none;
+        }
+        .buscador .close-input {
+            display: inline-block;
+            margin-left: -45px;
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+        }
+        .buscador .close-input:hover {
+            background-color: #f7f7f7;
+        }
+        /* RESULTADOS DE BUSQUEDA  */
+            .caja-resultados {
+                background-color: #fff;
+                padding: 25px;
+                border-radius: 15px;
+                box-shadow: 0px 0px 37px 8px rgba(0,0,0,0.05);
+                position: absolute;
+                right: 83px;
+                top:180px;
+                z-index: 999;
+                min-width: 400px;
+                display: none;
+            }
+            .caja-resultados .cuadrado {
+                width: 25px;
+                height: 25px;
+                background-color:white;
+                margin-top: -35px;
+                float: right;
+                transform: rotate(45deg);
+                z-index: -10;
+            }
+            .caja-resultados .resultado {
+                padding: 25px 15px 21px 15px;
+                border-bottom: 1px solid #f7f7f7;
+            }
+            .caja-resultados .resultado:hover {
+                background-color: #f7f7f7;
+            }
+            .caja-resultados .resultado img{
+                width: 32px;
+                height: auto;
+                vertical-align: -webkit-baseline-middle;
+                margin-right: 15px;
+                margin-top: -14px;
+            }
+            .caja-resultados .resultado h3 {
+                display: inline-block;
+                font-weight: 400;
+            }
+            .caja-resultados p {
+                font-size: 18px;
+            }
+    /* CATEGORIAS DE INDEX  */
+        .index .categoria {
+            margin:90px 0px!important;
+        }
+/* CATEGORIAS  */
+    .categorias {
+        overflow: hidden;
+    }
+    .categoria {
+        margin:40px 0px;
+        overflow: hidden;
+    }
+    .categoria h2 {
+        font-size: 24px;
+        font-weight: 700;
+        padding-bottom: 40px;
+    }
+    .categoria a {
+        margin-right: 30px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .categoria article {
+        padding: 30px 25px;
+        border-radius: 15px;
+        box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+        background-color: #f7f7f7;
+        width: 297px;
+        display: flex;
+        float: left;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .categoria article:hover {
+        background-color: #eee;
+    }
+    .categoria a:nth-child(3n+1){
+        margin-right: 0px;
+    }
+    .categoria article img {
+        width: 42px;
+        height: auto;
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+    .categoria article h3 {
+        font-size: 18px;
+        font-weight: 400;
+        display: inline-block
+    }
+
+    .categoria .mas-categoria {
+        padding: 30px 35px;
+        border-radius: 15px;
+        box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+        background-color: #363636;
+        display: flex;
+        float: left;
+        align-items: center;
+        margin-bottom: 30px;
+        font-size: 36px;
+    }
+    .categoria .mas-categoria span  {
+        color: #FFFFFF;
+    }
+    .categoria .mas-categoria:hover {
+        background-color: #4e4e4e;
+    }
+    .mas-categoria-i {
+        padding: 30px 35px;
+        border-radius: 15px;
+        box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+        background-color: #363636;
+        align-items: center;
+        margin-bottom: 30px;
+        font-size: 18px;
+        cursor: pointer;
+        display: none;
+        color:#fff;
+        margin:0px auto;
+    }
+    .mas-categoria-i:hover {
+        background-color: #4e4e4e;
+    }
+    .mas-categoria-i img {
+        width: 16px;
+        height: auto;
+        vertical-align: middle;
+        margin-left: 05px;
+    }
+/* APLICACION  */
+    .aplicacion .titulo-aplicacion {
+        padding: 40px 0px;
+    }
+    .aplicacion .titulo-aplicacion h1 {
+        display: inline-block;
+        font-size: 28px;
+        font-weight: 700;
+    }
+    .aplicacion .titulo-aplicacion img {
+        width: 48px;
+        height: auto;
+        vertical-align: top;
+        margin-left: 15px;
+        margin-top: -6px;
+    }
+    .aplicacion-container {
+        box-sizing: border-box;
+        width: 100%;
+        background-color: #f7f7f7;
+        box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+        border-radius: 15px;
+        padding: 35px 30px;
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+    .alerta {
+        background-color:#f8d7da;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        text-align: center;
+        border-radius: 15px;
+        color: #721c24;
+        border:1px solid #f5c6cb;
+        font-size: 18px;
+        display: none;
+        margin-bottom: 20px;
+    }
+    .mensaje-flotante {
+        background-color: #4cb050;
+        box-shadow: 0px 0px 37px 8px rgba(0,0,0,0.05);
+        padding: 18px;
+        border-radius: 15px;
+        text-align: center;
+        display: block;
+        width: 300px;
+        font-size: 18px;
+        color: #fff;
+        position: fixed;
+        bottom:40px;
+        transform: translateX(-50%);
+        left: 50%;
+        z-index: 20;
+        display: none;
+    }
+    .mensaje-pre-aplicacion {
+        width: 100%;
+        font-size: 20px;
+        padding-bottom: 40px;
+        margin-top: -20px;
+    } 
+    .efecto-click:active
+    {
+        transform: scale(1.05);
+    }
+    .texto .relacionados li {
+        list-style-type: none;
+        padding-left: 30px;
+        background-image: url(../images/relacionado.png);
+        background-size: 23px;
+        background-repeat: no-repeat;
+        background-position: 0% 50%;
+    }
+    .texto .relacionados li:hover {
+        text-decoration: underline
+    }
+    /* TEXTO  */
+        .texto {
+            overflow: hidden;
+            padding: 20px 0px 30px 0px;
+        }
+        .texto h2 {
+            font-size: 24px;
+            font-weight: 700;
+            padding:30px 0px;
+        }
+        .texto h3 {
+            font-size: 22px;
+            font-weight: 700;
+            padding-bottom: 30px;
+            padding-top: 30px;
+        }
+        .texto p {
+            margin-bottom: 30px;
+            line-height: 30px;
+            font-size: 20px;
+        }
+        .texto .titulo-pagina {
+            padding-bottom: 30px;
+        }
+        .texto ul, .texto ol {
+            margin-bottom: 30px;
+        }
+        .texto ul li, .texto ol li {
+            font-size: 20px;
+            line-height: 30px;
+            margin-bottom: 20px;
+            color: #363636;
+        }
+        .texto .aclaracion {
+            font-size: 15px;
+            font-style: italic;
+        }
+        .texto .imagen {
+            display: block;
+            margin-bottom: 30px;
+        }
+        .texto .imagen-full {
+            width: 100%;
+            height: auto;
+            margin: 10px 0px 0px 0px;
+            border-radius: 15px;
+        }
+        .texto .imagen-ajust {
+            width: 50%;
+            height: auto;
+            display: block;
+            margin:1px auto 0px auto;
+            border-radius: 15px;
+        }
+        .texto .imagen-caption {
+            text-align: center;
+            width: 100%;
+            display: block;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        .texto ol {
+            counter-reset: my-awesome-counter;
+            list-style: none;
+            margin-left: 30px;
+          }
+        .texto ol li {
+        counter-increment: my-awesome-counter;
+        position: relative;
+        }
+        .texto ol li::before {
+        content: counter(my-awesome-counter);
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        position: absolute;
+        --size: 28px;
+        left: calc(-1 * var(--size) - 10px);
+        line-height: var(--size);
+        width: var(--size);
+        height: var(--size);
+        top: 2px;
+        background: #363636;
+        border-radius: 50%;
+        text-align: center;
+        }
+          
+        /*TABLAS*/
+            .texto table {
+                border: 0px solid #F7F7F7;
+                background-color: #FFFFFF;
+                width: 100%;text-align: left;
+                border-collapse: collapse;
+                margin-bottom:40px;
+                color:#4e4e4e;
+                margin-top:35px!important;
+                font-size: 18px;
+            }
+            .texto table td, .texto table th {
+                border: 1px solid #ddd;
+                padding: 15px 10px;
+                overflow: hidden;
+            }
+            .texto table thead {
+                background-color: #F7F7F7;
+            }
+	/* FOOTER */
+    footer {
+        border-top: 1px solid #eee;
+        padding: 40px 0px;
+        overflow: hidden;
+        margin-top: 40px;
+    }
+    footer .grudemi {
+        font-size: 18px;
+        width: 40%;
+        display: inline-block;
+    }
+    footer .grudemi img {
+        width: 32px;
+        height: auto;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+    footer .links-footer {
+        float: right;
+    }
+    footer .links-footer a {
+        font-size: 18px;
+        margin-left: 15px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #363636;
+    }
+	.aplicacion-container {
+    text-align: center
+}
+/* CANTIDAD DE DADOS  */
+.cantidad-de-dados {
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 40px;
+    padding-top: 10px;
+}
+
+/* DADOS  */
+.dado {
+    min-width: 350px;
+    border-radius: 15px;
+    padding: 30px 20px 30px 30px;
+    background-color: #fff;
+    display: inline-block;
+    box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+    font-size: 18px;
+    color: #373737;
+}
+.dado img {
+    width: 96px;
+    height: auto;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    transition: all 0.5s;
+}
+
+
+/* CANTIDAD TOTAL */
+.cantidad-total {
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-top: 20px;
+    color: #737373;
+}
+
+/* BOTON  */
+.boton-verde {
+    width: 50%;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.mensaje-barra {
+    color: #737373;
+    font-size: 14px;
+}
+
+/* SELECTOR  */
+
+.selector {
+    padding: 8px 12px 8px 8px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.10);
+    display: inline-block;
+    background-color: #fff;
+    margin-left: 15px;
+}
+
+select {
+    border:none;
+    padding:10px;
+    font-size: 18px;;
+    font-weight: 700;
+    -webkit-appearance: none;
+    width: 50px;
+    z-index: 999;
+    background: url(down-arrow.png);
+    background-repeat: no-repeat;
+    background-position: right 15px;
+    background-size: 16px;
+    background-color: #fff;
+
+}
+
+select:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+
+@media screen and (max-width:450px){
+    .dado {
+        width: 100%;
+        min-width: inherit
+    }
+
+    .boton-verde {
+        width: 80%;
+    }
+}
+	</style>
+	<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-174265612-1');
+    </script>
+</head>
+<body>
+    <section class="main">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="stylesheet" href="dado-online.css">
+        <script async src="dado-online.js"></script>
+        <div class="aplicacion contain-728" id="cont">
+            <div class="titulo-aplicacion">
+            </div>
+            <div class="aplicacion-container" id="app">
+                <div class="cantidad-de-dados">
+                    Cantidad de dados:
+                    <div class="selector">
+                        <select name="" id="selector-de-dados">
+                                <option value="selector-1">1</option>
+                                <option value="selector-2">2</option>
+                                <option value="selector-3">3</option>
+                                <option value="selector-4">4</option>
+                                <option value="selector-5">5</option>
+                                <option value="selector-6">6</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="dado" id="dice">
+                    <img src="https://herramientasyutilidades.com/entretenimiento/dado-online/1.png" alt="" id="dado-1">
+                    <img src="https://herramientasyutilidades.com/entretenimiento/dado-online/1.png" alt="" style="display:none" id="dado-2">
+                    <img src="https://herramientasyutilidades.com/entretenimiento/dado-online/1.png" alt="" style="display:none" id="dado-3">
+                    <img src="https://herramientasyutilidades.com/entretenimiento/dado-online/1.png" alt="" style="display:none" id="dado-4">
+                    <img src="https://herramientasyutilidades.com/entretenimiento/dado-online/1.png" alt="" style="display:none" id="dado-5">
+                    <img src="https://herramientasyutilidades.com/entretenimiento/dado-online/1.png" alt="" style="display:none" id="dado-6">
+                    <br>
+                    Resultado: <span id="resultado">1</span>
+                </div>
+                <div class="cantidad-total">El dado se tiró <span id="cantidad-tirados">00</span> veces.</div>
+                <div class="boton-verde" id="tirar-dado">Tirar dado</div>
+                <!-- <div class="mensaje-barra">(o presioná barra espaciadora)</div> -->
+            </div>
+            
+    </div>
+    </section>
+<script>
+// DECLARACION DE VARIABLES 
+let selectorDados = document.getElementById('selector-de-dados')
+let dado1 = document.getElementById('dado-1')
+let dado2 = document.getElementById('dado-2')
+let dado3 = document.getElementById('dado-3')
+let dado4 = document.getElementById('dado-4')
+let dado5 = document.getElementById('dado-5')
+let dado6 = document.getElementById('dado-6')
+let resultado = document.getElementById('resultado')
+let cantidadTirados = document.getElementById('cantidad-tirados')
+let botonTirar = document.getElementById('tirar-dado')
+let dice = document.getElementById('dice')
+
+let random1, random2, random3, random4, random5, random6
+let suma = 0
+let state = 'unrolled'
+
+// FUNCION GENERAL 
+function tirarDado() {
+    random1 =  Math.floor(Math.random() * (7 - 1) + 1)
+    dado1.src = "https://herramientasyutilidades.com/entretenimiento/dado-online/" + random1 + ".png"
+    random2 =  Math.floor(Math.random() * (7 - 1) + 1)
+    dado2.src = "https://herramientasyutilidades.com/entretenimiento/dado-online/" + random2 + ".png"
+    random3 =  Math.floor(Math.random() * (7 - 1) + 1)
+    dado3.src = "https://herramientasyutilidades.com/entretenimiento/dado-online/" + random3 + ".png"
+    random4 =  Math.floor(Math.random() * (7 - 1) + 1)
+    dado4.src = "https://herramientasyutilidades.com/entretenimiento/dado-online/" + random4 + ".png"
+    random5 =  Math.floor(Math.random() * (7 - 1) + 1)
+    dado5.src = "https://herramientasyutilidades.com/entretenimiento/dado-online/" + random5 + ".png"
+    random6 =  Math.floor(Math.random() * (7 - 1) + 1)
+    dado6.src = "https://herramientasyutilidades.com/entretenimiento/dado-online/" + random6 + ".png"
+    actualizarResultado()
+    suma++
+    cantidadTirados.innerText = suma
+    roll()
+}
+
+// SELECTOR DE DADOS 
+selectorDados.addEventListener('change', function(){
+    if (selectorDados.value == "selector-1") {
+        dado1.style.display = "inline-block"
+        dado2.style.display = "none"
+        dado3.style.display = "none"
+        dado4.style.display = "none"
+        dado5.style.display = "none"
+        dado6.style.display = "none" 
+    } else if (selectorDados.value == "selector-2") {
+        dado1.style.display = "inline-block"
+        dado2.style.display = "inline-block"
+        dado3.style.display = "none"
+        dado4.style.display = "none"
+        dado5.style.display = "none"
+        dado6.style.display = "none"
+    } else if (selectorDados.value == "selector-3") {
+        dado1.style.display = "inline-block"
+        dado2.style.display = "inline-block"
+        dado3.style.display = "inline-block"
+        dado4.style.display = "none"
+        dado5.style.display = "none"
+        dado6.style.display = "none"
+    } else if (selectorDados.value == "selector-4") {
+        dado1.style.display = "inline-block"
+        dado2.style.display = "inline-block"
+        dado3.style.display = "inline-block"
+        dado4.style.display = "inline-block"
+        dado5.style.display = "none"
+        dado6.style.display = "none"
+    } else if (selectorDados.value == "selector-5") {
+        dado1.style.display = "inline-block"
+        dado2.style.display = "inline-block"
+        dado3.style.display = "inline-block"
+        dado4.style.display = "inline-block"
+        dado5.style.display = "inline-block"
+        dado6.style.display = "none"
+    } else if (selectorDados.value == "selector-6") {
+        dado1.style.display = "inline-block"
+        dado2.style.display = "inline-block"
+        dado3.style.display = "inline-block"
+        dado4.style.display = "inline-block"
+        dado5.style.display = "inline-block"
+        dado6.style.display = "inline-block"
+    }
+    actualizarResultado()
+    if (isNaN(resultado.innerText) ) {
+        resultado.innerText = "1"
+    }
+})
+
+// AL HACER CLICK EN "TIRAR DADO"
+botonTirar.addEventListener('click', tirarDado)
+
+// ACTUALIZAR RESULTADOS 
+function actualizarResultado() {
+    resultado.innerText = random1
+
+    if (dado2.style.display == "inline-block") {
+        resultado.innerText = random1 + random2
+    } 
+    if (dado3.style.display == "inline-block") {
+        resultado.innerText = random1 + random2 + random3
+    } 
+    if (dado4.style.display == "inline-block") {
+        resultado.innerText = random1 + random2 + random3 + random4
+    } 
+    if (dado5.style.display == "inline-block") {
+        resultado.innerText = random1 + random2 + random3 + random4 + random5
+    } 
+    if (dado6.style.display == "inline-block") {
+        resultado.innerText = random1 + random2 + random3 + random4 + random5 + random6
+    }
+}
+
+// FUNCION PARA EFECTO
+function roll() {
+	if (state=='unrolled') {
+        dado1.style.transform = 'rotate(360deg)'
+		dado2.style.transform = 'rotate(360deg)'
+		dado3.style.transform = 'rotate(360deg)'
+		dado4.style.transform = 'rotate(360deg)'
+		dado5.style.transform = 'rotate(360deg)'
+		dado6.style.transform = 'rotate(360deg)'
+		state  = 'rolled'
+	} else {
+        dado1.style.transform = 'rotate(0deg)'
+		dado2.style.transform = 'rotate(0deg)'
+		dado3.style.transform = 'rotate(0deg)'
+		dado4.style.transform = 'rotate(0deg)'
+		dado5.style.transform = 'rotate(0deg)'
+		dado6.style.transform = 'rotate(0deg)'
+		state  = 'unrolled'
+	}
+}
+// EVENTO AL PRESIONAR BARRAR ESPACIADORA 
+window.addEventListener('keydown', function(e) {
+    if(e.keyCode == 32 && e.target == document.body) {
+        e.preventDefault();
+        tirarDado()
+    }
+});
+  
+</script>
+<script>
+
+</script>
+</body>
+</html>
